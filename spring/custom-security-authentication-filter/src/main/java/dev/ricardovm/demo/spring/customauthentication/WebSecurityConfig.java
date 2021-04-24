@@ -25,7 +25,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .httpBasic();
     }
-
-    //UserDetailsService (quando você armazena a senha)
-    //AuthenticationProvider (quando você não armazena a senha)
 }
