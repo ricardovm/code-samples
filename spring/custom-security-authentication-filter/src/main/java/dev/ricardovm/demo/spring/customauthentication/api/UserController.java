@@ -1,17 +1,15 @@
 package dev.ricardovm.demo.spring.customauthentication.api;
 
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/admin")
-@Secured("ROLE_ADMIN")
-public class AdminController {
+@RequestMapping("/user")
+public class UserController {
 
     @GetMapping
-    public String hi() {
-        return "admin";
+    public String user() {
+        return "user";
     }
 }

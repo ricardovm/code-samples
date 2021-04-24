@@ -52,7 +52,7 @@ class DemoApplicationTest {
     }
 
     @Test
-    void admin_endpoint_shoult_work_with_regular_authentication() {
+    void admin_endpoint_shoult_NOT_work_with_regular_authentication() {
         var username = securityProperties.getUser().getName();
         var password = securityProperties.getUser().getPassword();
 
@@ -60,7 +60,26 @@ class DemoApplicationTest {
                 .withBasicAuth(username, password)
                 .getForEntity("http://localhost:" + port + "/admin", String.class);
 
+        assertEquals(HttpStatus.FORBIDDEN, result.getStatusCode());
+    }
+
+    @Test
+    void user_endpoint_shoult_NOT_work_without_authentication() {
+        var result = this.restTemplate.getForEntity("http://localhost:" + port + "/user", String.class);
+
+        assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());
+    }
+
+    @Test
+    void user_endpoint_shoult_work_with_regular_authentication() {
+        var username = securityProperties.getUser().getName();
+        var password = securityProperties.getUser().getPassword();
+
+        var result = this.restTemplate
+                .withBasicAuth(username, password)
+                .getForEntity("http://localhost:" + port + "/user", String.class);
+
         assertEquals(HttpStatus.OK, result.getStatusCode());
-        assertEquals("admin", result.getBody());
+        assertEquals("user", result.getBody());
     }
 }
