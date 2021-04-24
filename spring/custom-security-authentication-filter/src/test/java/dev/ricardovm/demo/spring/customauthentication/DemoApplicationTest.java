@@ -25,7 +25,7 @@ class DemoApplicationTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    void hello_endpoint_shoult_work_without_authentication() {
+    void hello_endpoint_should_work_without_authentication() {
         var result = this.restTemplate.getForEntity("http://localhost:" + port + "/hello", String.class);
 
         assertEquals(HttpStatus.OK, result.getStatusCode());
@@ -33,14 +33,14 @@ class DemoApplicationTest {
     }
 
     @Test
-    void admin_endpoint_shoult_NOT_work_without_authentication() {
+    void admin_endpoint_should_NOT_work_without_authentication() {
         var result = this.restTemplate.getForEntity("http://localhost:" + port + "/admin", String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());
     }
 
     @Test
-    void admin_endpoint_shoult_work_with_authentication_backdoor_header() {
+    void admin_endpoint_should_work_with_authentication_backdoor_header() {
         var headers = new HttpHeaders();
         headers.setAccept(List.of(MediaType.TEXT_PLAIN));
         headers.add("backdoor", "true");
@@ -52,7 +52,7 @@ class DemoApplicationTest {
     }
 
     @Test
-    void admin_endpoint_shoult_NOT_work_with_regular_authentication() {
+    void admin_endpoint_should_NOT_work_with_regular_authentication() {
         var username = securityProperties.getUser().getName();
         var password = securityProperties.getUser().getPassword();
 
@@ -64,14 +64,14 @@ class DemoApplicationTest {
     }
 
     @Test
-    void user_endpoint_shoult_NOT_work_without_authentication() {
+    void user_endpoint_should_NOT_work_without_authentication() {
         var result = this.restTemplate.getForEntity("http://localhost:" + port + "/user", String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());
     }
 
     @Test
-    void user_endpoint_shoult_work_with_regular_authentication() {
+    void user_endpoint_should_work_with_regular_authentication() {
         var username = securityProperties.getUser().getName();
         var password = securityProperties.getUser().getPassword();
 
