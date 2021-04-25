@@ -13,6 +13,8 @@ Read (and run) the tests to see how it works:
 ./mvnw test
 ```
 
+There is a Quarkus version [here](../../quarkus/custom-authentication)
+
 ## You'll need
 
 - Java 11+
