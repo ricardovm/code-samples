@@ -42,7 +42,6 @@ class DemoApplicationTest {
     @Test
     void admin_endpoint_should_work_with_authentication_backdoor_header() {
         var headers = new HttpHeaders();
-        headers.setAccept(List.of(MediaType.TEXT_PLAIN));
         headers.add("backdoor", "true");
 
         var result = restTemplate.exchange("http://localhost:" + port + "/admin", HttpMethod.GET, new HttpEntity<>(headers), String.class);
