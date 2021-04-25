@@ -1,15 +1,14 @@
 package dev.ricardovm.demo.spring.customauthentication.api;
 
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/hello")
+@RequestMapping("hello")
 public class HelloController {
 
-    @GetMapping(produces = MediaType.TEXT_PLAIN_VALUE)
+    @GetMapping
     public String hello() {
         return "hello";
     }

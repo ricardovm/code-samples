@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("admin")
 @Secured("ROLE_ADMIN")
 public class AdminController {
 
     @GetMapping
-    public String hi() {
+    public String admin() {
         return "admin";
     }
 }
