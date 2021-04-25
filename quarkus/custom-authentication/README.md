@@ -1,4 +1,4 @@
-# Custom Spring Security Authentication Filter
+# Custom Quarkus Authentication Mechanism
 
 When you already have a custom authentication system and need to integrate it
 with Quarkus, you should write a `HttpAuthenticationMechanism`.
